@@ -1,0 +1,40 @@
+{
+  "name": "postgres-driver-service",
+  "version": "0.0.1",
+  "description": "A driver service built to easily preform queries against Postgres.",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "build:watch": "./node_modules/.bin/tsc --watch",
+    "test": "./node_modules/.bin/jest",
+    "test:coverage": "./node_modules/.bin/jest --collectCoverage",
+    "lint": "./node_modules/.bin/eslint --ext .ts --cache .",
+    "lint:fix": "./node_modules/.bin/eslint --ext .ts --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asmahood/postgres-driver-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asmahood/postgres-driver-service/issues"
+  },
+  "homepage": "https://github.com/asmahood/postgres-driver-service#readme",
+  "author": "Adam Mahood (mahood.adam@gmail.com)",
+  "license": "MIT",
+  "files": [
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "@types/pg": "^7.14.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "eslint": "^7.11.0",
+    "jest": "^26.5.3",
+    "pg": "^8.4.2",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  }
+}
