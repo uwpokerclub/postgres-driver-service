@@ -2,8 +2,8 @@
   "name": "postgres-driver-service",
   "version": "1.0.0",
   "description": "A driver service built to easily preform queries against Postgres.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/tsc",
     "build:watch": "./node_modules/.bin/tsc --watch",
