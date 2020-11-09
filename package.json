@@ -1,6 +1,6 @@
 {
   "name": "postgres-driver-service",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A driver service built to easily preform queries against Postgres.",
   "main": "index.js",
   "types": "index.d.ts",
