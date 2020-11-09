@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -->
 
 ## [Unreleased]
+
+## [1.0.1] - 2020-11-08
 ### Fixed
 - Fixed incorrect package main and types options
 
@@ -25,5 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README
 - MIT License
 
-[Unreleased]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/asmahood/postgres-driver-service/releases/tag/v1.0.0
