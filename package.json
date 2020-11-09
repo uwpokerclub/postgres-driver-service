@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A driver service built to easily preform queries against Postgres.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/tsc",
     "build:watch": "./node_modules/.bin/tsc --watch",
