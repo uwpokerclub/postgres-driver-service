@@ -101,12 +101,11 @@ export class DriverService {
     try {
       const { rows } = await client.query(query, params);
 
-      this.initQueryMeta();
-
       return rows;
     } catch (err) {
       throw new Error(`DBDRIVER::FAILED_QUERY ${query} : ${err}`);
     } finally {
+      this.initQueryMeta();
       client.release();
     }
   }
