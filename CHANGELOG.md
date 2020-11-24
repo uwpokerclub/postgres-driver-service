@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -->
 
 ## [Unreleased]
+
+## [1.0.2] - 2020-11-23
 ### Fixed
 - Fixed a bug where the query meta would not reset on a failed query (#1)
 
@@ -29,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README
 - MIT License
 
-[Unreleased]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/asmahood/postgres-driver-service/releases/tag/v1.0.0
