@@ -1,18 +1,22 @@
+import { buildOrderBy, buildWhereQuery } from ".";
 import { GeneralQueryMod, QueryMod, WhereQueryMod } from "../../../types";
 
 export default function buildSelectQuery(tableName: string, queryMods: QueryMod[], columns?: string[]): string {
-  // Build the base select clause
-  const columnString = columns != null || columns.length !== 0 ? columns.join(", ") : "*";
+  // Build the base select clause.
+  const columnString = columns != undefined && columns.length !== 0 ? columns.join(", ") : "*";
   const baseQuery = `SELECT ${columnString} FROM ${tableName}`;
 
-  // Build a valid where clause with query mods
+  // Build a valid where clause with query mods.
   const whereMods = queryMods.filter((q) => q.type === "where") as WhereQueryMod[];
+  const whereQuery = buildWhereQuery(whereMods);
 
-  // Build an order by clause
+  // Build an order by clause.
   const orderByMods = queryMods.filter((q) => q.type === "order") as GeneralQueryMod[];
+  const orderByQuery = buildOrderBy(orderByMods);
 
-  // Build the rest of the query
+  // Build the rest of the query.
   const otherMods = queryMods.filter((q) => q.type === "general");
+  const restOfQuery = otherMods.map((q) => q.toString()).join(" ");
 
-  return "";
+  return `${baseQuery} ${whereQuery} ${orderByQuery} ${restOfQuery}`.replace(/\s+/gi, () => " ").trim() + ";";
 }

@@ -2,17 +2,23 @@ import buildWhereQuery from "./whereQueryBuilder";
 import { WhereQueryMod } from "../../../types";
 
 describe("whereQueryBuilder", () => {
-  it("should build a WHERE clause with one expression", () => {
-    const mod: WhereQueryMod = {
-      type: "where",
-      and: true,
-      parameters: ["hello"],
-      toString(): string {
-        return "expr = ?";
-      }
-    };
+  it("should build an empty string if no where mods are present", () => {
+    expect(buildWhereQuery([])).toBe("");
+  });
 
-    expect(buildWhereQuery([mod])).toBe("WHERE expr = ?");
+  it("should build a WHERE clause with one expression", () => {
+    const mod: WhereQueryMod[] = [
+      {
+        type: "where",
+        and: true,
+        parameters: ["hello"],
+        toString(): string {
+          return "expr = ?";
+        }
+      }
+    ];
+
+    expect(buildWhereQuery(mod)).toBe("WHERE expr = ?");
   });
 
   it("should build multiple where expressions", () => {

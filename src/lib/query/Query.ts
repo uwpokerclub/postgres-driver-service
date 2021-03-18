@@ -1,7 +1,9 @@
 import { PoolClient } from "pg";
-import { QueryMod } from "../../types";
+import { QueryMod, WhereQueryMod } from "../../types";
 
-import { buildInsertQuery } from "./query_builders";
+import { buildInsertQuery, buildSelectQuery, buildUpdateQuery } from "./query_builders";
+import { convertToParameters } from "./query_builders/utils";
+import { where } from "./query_mods/where";
 
 export default class Query {
   private tableName: string;
@@ -17,19 +19,30 @@ export default class Query {
   }
 
   public async all<T>(queryMods: QueryMod[], columns?: string[]): Promise<T[]> {
-    const { rows } = await this.client.query("", []);
+    const args = queryMods.filter((q) => q.type === "where").map((q: WhereQueryMod) => q.parameters).flat();
+    const params = convertToParameters(args);
+    const selectQuery = buildSelectQuery(this.tableName, queryMods, columns).replace(/\?/gi, () => params.shift());
 
+    const { rows } = await this.client.query(selectQuery, args);
     return rows as T[];
   }
 
   public async find<T>(column: string, value: unknown): Promise<T> {
-    const { rows: [ data ] } = await this.client.query("", []);
+    const whereMod = where(`${column} = ?`, [value]);
+    const selectQuery = buildSelectQuery(this.tableName, [whereMod]);
 
+    const { rows: [ data ] } = await this.client.query(selectQuery, [value]);
     return data as T;
   }
 
-  public async update<T>(queryMods: QueryMod[], values: T): Promise<void> {
-    await this.client.query("", []);
+  public async update<T>(queryMods: QueryMod[], values: Partial<T>): Promise<void> {
+    const columns = Object.keys(values);
+
+    const args = [Object.values(values), queryMods.filter((q) => q.type === "where").map((q: WhereQueryMod) => q.parameters)].flat(2);
+    const params = convertToParameters(args);
+    const updateQuery = buildUpdateQuery(this.tableName, queryMods, columns).replace(/\?/gi, () => params.shift());
+
+    await this.client.query(updateQuery, params);
   }
 
   public async delete(queryMods: QueryMod[]): Promise<void> {
