@@ -1,7 +1,7 @@
 import { PoolClient } from "pg";
 import { QueryMod, WhereQueryMod } from "../../types";
 
-import { buildInsertQuery, buildSelectQuery, buildUpdateQuery } from "./query_builders";
+import { buildCountQuery, buildDeleteQuery, buildInsertQuery, buildSelectQuery, buildUpdateQuery } from "./query_builders";
 import { convertToParameters } from "./query_builders/utils";
 import { where } from "./query_mods/where";
 
@@ -16,6 +16,15 @@ export default class Query {
 
   public async insert<T>(data: Partial<T>): Promise<void> {
     await this.client.query(buildInsertQuery(this.tableName, Object.keys(data), Object.values(data)), Object.values(data));
+  }
+
+  public async count(queryMods: QueryMod[]): Promise<number> {
+    const args = queryMods.filter((q) => q.type === "where").map((q: WhereQueryMod) => q.parameters).flat();
+    const params = convertToParameters(args);
+    const countQuery = buildCountQuery(this.tableName, queryMods).replace(/\?/gi, () => params.shift());
+
+    const { rows: [ { count }]} = await this.client.query(countQuery, params);
+    return Number(count);
   }
 
   public async all<T>(queryMods: QueryMod[], columns?: string[]): Promise<T[]> {
@@ -46,7 +55,11 @@ export default class Query {
   }
 
   public async delete(queryMods: QueryMod[]): Promise<void> {
-    await this.client.query("", []);
+    const args = queryMods.filter((q) => q.type === "where").map((q: WhereQueryMod) => q.parameters).flat();
+    const params = convertToParameters(args);
+    const deleteQuery = buildDeleteQuery(this.tableName, queryMods).replace(/\?/gi, () => params.shift());
+
+    await this.client.query(deleteQuery, params);
   }
 
   public async query<T>(queryStr: string, params: unknown[]): Promise<T[]> {
