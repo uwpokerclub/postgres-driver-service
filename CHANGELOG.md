@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2021-03-22
+
 ### Fixed
 
 - Fixed exported objects in index file. (#5)
@@ -55,7 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README
 - MIT License
 
-[unreleased]: https://github.com/uwpokerclub/postgres-driver-service/compare/v2.0.0...HEAD
+[unreleased]: https://github.com/uwpokerclub/postgres-driver-service/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/uwpokerclub/postgres-driver-service/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/uwpokerclub/postgres-driver-service/compare/v1.0.2...v2.0.0
 [1.0.2]: https://github.com/uwpokerclub/postgres-driver-service/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/uwpokerclub/postgres-driver-service/compare/v1.0.0...v1.0.1
