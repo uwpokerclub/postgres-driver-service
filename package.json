@@ -7,7 +7,7 @@
   "scripts": {
     "build": "./node_modules/.bin/tsc",
     "build:watch": "./node_modules/.bin/tsc --watch",
-    "test": "./node_modules/.bin/jest",
+    "test": "./node_modules/.bin/jest --runInBand --detectOpenHandles",
     "test:coverage": "./node_modules/.bin/jest --collectCoverage",
     "lint": "./node_modules/.bin/eslint --ext .ts --cache .",
     "lint:fix": "./node_modules/.bin/eslint --ext .ts --fix ."
@@ -26,15 +26,16 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@types/pg": "^7.14.5"
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.14",
+    "@types/pg": "^7.14.11",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
     "eslint": "^7.11.0",
     "jest": "^26.5.3",
-    "pg": "^8.4.2",
+    "pgmock2": "^2.0.6",
     "ts-jest": "^26.4.1",
     "typescript": "^4.0.3"
   }
