@@ -3,7 +3,7 @@ import { QueryMod, WhereQueryMod } from "../../types";
 
 import { buildCountQuery, buildDeleteQuery, buildInsertQuery, buildSelectQuery, buildUpdateQuery } from "./query_builders";
 import { convertToParameters } from "./query_builders/utils";
-import { where } from "./query_mods/where";
+import { limit, where } from "./query_mods";
 
 export default class Query {
   private tableName: string;
@@ -38,7 +38,8 @@ export default class Query {
 
   public async find<T>(column: string, value: unknown): Promise<T> {
     const whereMod = where(`${column} = ?`, [value]);
-    const selectQuery = buildSelectQuery(this.tableName, [whereMod]);
+    const params = convertToParameters([value]);
+    const selectQuery = buildSelectQuery(this.tableName, [whereMod, limit(1)]).replace(/\?/gi, () => params.shift());
 
     const { rows: [ data ] } = await this.client.query(selectQuery, [value]);
     return data as T;

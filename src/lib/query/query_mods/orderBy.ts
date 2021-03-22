@@ -1,6 +1,6 @@
 import { GeneralQueryMod, OrderByDirections } from "../../../types";
 
-export function orderBy(column: string, direction = OrderByDirections.DESC): GeneralQueryMod {
+export default function orderBy(column: string, direction = "DESC" as OrderByDirections): GeneralQueryMod {
   return {
     type: "order",
     toString(): string {

@@ -1,9 +1,6 @@
 export type QueryModTypes = "where" | "general" | "order";
 
-export enum OrderByDirections {
-  ASC = "ASC",
-  DESC = "DESC"
-}
+export type OrderByDirections = "ASC" | "DESC";
 
 export interface GeneralQueryMod {
   type: QueryModTypes;

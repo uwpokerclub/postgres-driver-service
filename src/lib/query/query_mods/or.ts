@@ -1,6 +1,6 @@
 import { WhereQueryMod } from "../../../types";
 
-export function or(expression: string, parameters: unknown[]): WhereQueryMod {
+export default function or(expression: string, parameters: unknown[]): WhereQueryMod {
   return {
     type: "where",
     and: false,
