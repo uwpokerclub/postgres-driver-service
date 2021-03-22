@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed exported objects in index file. (#5)
+
 ## [2.0.0] - 2021-03-21
 
 ### Added
