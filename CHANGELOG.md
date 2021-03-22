@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2021-03-21
+
 ### Added
 
 - Added ConnectionPool which can be used to connect with a Postgres database. (#4)
@@ -49,7 +51,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README
 - MIT License
 
-[unreleased]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.2...HEAD
-[1.0.2]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.1...v1.0.2
-[1.0.1]: https://github.com/asmahood/postgres-driver-service/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/asmahood/postgres-driver-service/releases/tag/v1.0.0
+[unreleased]: https://github.com/uwpokerclub/postgres-driver-service/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/uwpokerclub/postgres-driver-service/compare/v1.0.2...v2.0.0
+[1.0.2]: https://github.com/uwpokerclub/postgres-driver-service/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/uwpokerclub/postgres-driver-service/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/uwpokerclub/postgres-driver-service/releases/tag/v1.0.0
