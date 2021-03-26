@@ -52,7 +52,7 @@ export default class Query {
     const params = convertToParameters(args);
     const updateQuery = buildUpdateQuery(this.tableName, queryMods, columns).replace(/\?/gi, () => params.shift());
 
-    await this.client.query(updateQuery, params);
+    await this.client.query(updateQuery, args);
   }
 
   public async delete(queryMods: QueryMod[]): Promise<void> {
@@ -60,7 +60,7 @@ export default class Query {
     const params = convertToParameters(args);
     const deleteQuery = buildDeleteQuery(this.tableName, queryMods).replace(/\?/gi, () => params.shift());
 
-    await this.client.query(deleteQuery, params);
+    await this.client.query(deleteQuery, args);
   }
 
   public async query<T>(queryStr: string, params: unknown[]): Promise<T[]> {
