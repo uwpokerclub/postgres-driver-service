@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed an issue where arguments were not being passed to query (#7)
+
 ## [2.0.2] - 2021-03-25
 
 ### Added
