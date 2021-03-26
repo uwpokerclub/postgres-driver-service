@@ -7,10 +7,12 @@ import {
   orderBy,
   where,
 } from "./lib/query/query_mods";
+import { QueryMod } from "./types";
 
 export {
   ConnectionPool,
   Query,
+  QueryMod,
   limit,
   offset,
   or,
