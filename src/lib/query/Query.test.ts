@@ -1,5 +1,5 @@
 import Query from "./Query";
-import { OrderByDirections, QueryMod } from "../../types";
+import { QueryMod } from "../../types";
 import PgMock2, { getPool } from 'pgmock2';
 
 import { where, orderBy, limit, offset } from "../query/query_mods";
