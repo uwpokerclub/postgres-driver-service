@@ -1,10 +1,10 @@
-import { Pool, PoolClient } from "pg";
+import { Pool, PoolClient, ConnectionConfig } from "pg";
 
 export default class ConnectionPool {
   private pool: Pool;
 
-  public constructor(connectionString: string) {
-    this.pool = new Pool({ connectionString });
+  public constructor(connectionString: string, options?: ConnectionConfig ) {
+    this.pool = new Pool({ connectionString, ...options });
   }
 
   public async getConnection(): Promise<PoolClient> {
